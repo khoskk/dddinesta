@@ -98,15 +98,31 @@ fig_bar_body = px.bar(
 fig_bar_body.update_layout(font=dict(size=11))
 
 # Элемент 4: Столбчатая диаграмма (Цена по типу топлива)
+# Элемент 4 (обновлённый): Средняя цена по типу кузова и типу топлива
+df_body_fuel = df.groupby(['carbody', 'fueltype'], as_index=False)['price'].mean()
+
 fig_bar_fuel = px.bar(
-    df_fuel_price, x='fueltype', y='price',
-    title='Средняя цена по типу топлива',
-    labels={'fueltype': 'Тип топлива', 'price': 'Средняя цена ($)'},
-    height=420,
+    df_body_fuel,
+    x='carbody',
+    y='price',
     color='fueltype',
+    barmode='group',
+    title='Средняя цена по типу кузова и типу топлива',
+    labels={
+        'carbody': 'Тип кузова',
+        'price': 'Средняя цена ($)',
+        'fueltype': 'Тип топлива'
+    },
+    height=420,
     color_discrete_map={'gas': '#FF6B6B', 'diesel': '#4ECDC4'}
 )
-fig_bar_fuel.update_layout(font=dict(size=11))
+fig_bar_fuel.update_layout(
+    font=dict(size=11),
+    legend_title_text='Топливо',
+    xaxis_title='Тип кузова',
+    yaxis_title='Средняя цена ($)'
+)
+
 
 # 5. Верстка дашборда
 app.layout = html.Div(style={'font-family': 'Segoe UI, Arial, sans-serif', 'padding': '30px', 'background-color': '#f5f7fa'}, children=[
