@@ -198,9 +198,19 @@ app.layout = html.Div(style={'font-family': 'Segoe UI, Arial, sans-serif', 'padd
     
     # Подвал
     html.Hr(style={'margin-top': '30px', 'border': 'none', 'border-top': '1px solid #ddd'}),
-    html.P("Дашборд создан на основе датасета CarPrice_Assignment. Данные включают 205 автомобилей с характеристиками цены, мощности и типов кузова.", 
-           style={'text-align': 'center', 'color': '#7f8c8d', 'font-size': '13px', 'margin-top': '20px'})
+    html.P("Дашборд создан на основе датасета CarPrice_Assignment. Данные включают 205 автомобилей с характеристиками цены, мощности и типов кузова.",
+           style={'text-align': 'center', 'color': '#7f8c8d', 'font-size': '13px', 'margin-top': '20px'}),
+    
+    # Добавляем прикольную надпись в самом конце
+    html.Div(style={'text-align': 'center', 'margin-top': '30px', 'margin-bottom': '20px'}, children=[
+        html.H3("Created by ", 
+                style={'color': '#2c3e50', 'font-family': 'Courier New, monospace'}),
+        html.P("Melikhov • Elhennauy • Ahmedov", 
+               style={'color': '#e74c3c', 'font-size': '20px', 'font-weight': 'bold', 
+                      'letter-spacing': '2px', 'text-shadow': '2px 2px 4px rgba(0,0,0,0.1)'})
+    ])
 ])
 
 if __name__ == '__main__':
     app.run(debug=True)
+
